@@ -1,0 +1,34 @@
+vllm==0.6.1.post2
+torch==2.4.0
+transformers>=4.44.2
+dm-env
+dm-tree
+fastchat
+deepspeed
+jsonlines
+peft
+torchtyping
+scipy
+tensorboard
+datasets
+sentencepiece
+tqdm
+typing_extensions
+setproctitle
+protobuf
+accelerate>=0.34.2
+numpy
+pylatexenc
+loguru
+sympy==1.12
+antlr4-python3-runtime==4.11.1 # ! The version needs to be compatible with sympy.
+word2number
+Pebble
+timeout-decorator
+flash_attn
+python_dateutil
+tensorboardX
+scikit-learn
+# for rstar
+pyparsing
+fuzzywuzzy

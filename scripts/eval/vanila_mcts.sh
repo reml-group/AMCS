@@ -1,0 +1,13 @@
+python reason/evaluation/evaluate.py \
+    --LM Qwen3-8B \
+    --RM math-shepherd-mistral-7b-prm \
+    --task_name bench \
+    --temperature 0.7 \
+    --max_new_tokens 1024 \
+    --num_sequence 2 \
+    --tree_max_width 5 \
+    --tree_max_depth 40 \
+    --save_dir vanila_mcts \
+    --method vanila_mcts \
+    --num_worker 80 \
+    --controller_addr http://0.0.0.0:28777 \

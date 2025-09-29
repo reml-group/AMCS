@@ -1,0 +1,13 @@
+python reason/evaluation/evaluate.py \
+    --LM Qwen3-8B \
+    --RM math-shepherd-mistral-7b-prm \
+    --task_name omini \
+    --temperature 0.7 \
+    --max_new_tokens 1024 \
+    --num_sequence 2 \
+    --tree_max_width 5 \
+    --tree_max_depth 40 \
+    --save_dir beam_search \
+    --method beam_search \
+    --num_worker 64 \
+    --controller_addr http://0.0.0.0:28777
