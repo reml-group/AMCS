@@ -1,0 +1,2 @@
+# AMCS
+This project is the official implementation of the paper  "FROM STATIC TO DYNAMIC: ADAPTIVE MONTE CARLO SEARCH FOR MATHEMATICAL PROCESS SUPERVISION".
