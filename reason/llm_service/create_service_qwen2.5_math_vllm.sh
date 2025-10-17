@@ -10,9 +10,8 @@ PYTHON_EXECUTABLE=$(which python3)
 MODEL_BASE=/hpc2ssd/JH_DATA/spooler/qxiao183/workspace/hf_models
 POLICY_MODEL_NAME=GLM-4-9B-0414
 VALUE_MODEL_NAME=Qwen2.5-Math-7B-Instruct
-MODEL_PATH=/nfsdat/home/shqislm/yinziang/model/GLM-4-9B-0414/
-VALUE_MODEL_PATH=/nfsdat/home/shqislm/yinziang/model/qwen/Qwen2.5-Math-7B-Instruct/
-
+MODEL_PATH=path
+VALUE_MODEL_PATH=path
 LOGDIR=logs_fastchat
 
 tmux start-server

@@ -11,8 +11,8 @@ MODEL_BASE=/hpc2ssd/JH_DATA/spooler/qxiao183/workspace/hf_models/
 CUDA_DEVICE_BASE=0
 POLICY_MODEL_NAME=Qwen2.5-Math-7B-Instruct
 VALUE_MODEL_NAME=checkpoint-162
-MODEL_PATH=/nfsdat/home/jmaslm/yinziang/model/qwen/Qwen2.5-Math-7B-Instruct/
-VALUE_MODEL_PATH=/nfsdat/home/jmaslm/yza/openr_initial/prm/code/prm_results_qwen/bs_256_lr_0.0001/checkpoint-162
+MODEL_PATH=path
+VALUE_MODEL_PATH=path
 
 LOGDIR=logs_fastchat
 
