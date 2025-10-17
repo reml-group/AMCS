@@ -1,42 +1,25 @@
 #!/bin/bash
 
 
-# --- Language Model & Inference Settings ---
-# Path to the pretrained language model directory.
-MODEL_NAME="/data2/qsh/model/Qwen2.5-Math-7B-Instruct/"
-# The inference backend to use. "vllm" is recommended for high-throughput generation.
+
+MODEL_NAME="path"
 MODEL_TYPE="vllm"
-# The device to run the model on, typically "cuda".
 DEVICE_INFO="cuda"
 MAX_NEW_TOKENS=2048
-# Sampling temperature. Higher values (e.g., 0.7) increase randomness, 0.0 means deterministic.
 TEMPERATURE=0.7
-# Top-k sampling: considers only the top k most likely tokens. -1 disables it.
 TOP_K=30
-# Top-p (nucleus) sampling: considers tokens from the smallest set with a cumulative probability >= top_p.
 TOP_P=0.9
-# The fraction of GPU memory to reserve for the vLLM model.
 GPU_MEMORY_UTILIZATION=0.95
 
-# --- OmegaPRM MCTS Algorithm Settings ---
-# PUCT algorithm's exploration-exploitation trade-off constant.
 C_PUCT=0.125
-# Weighting factor for Monte Carlo value in the Q-score calculation.
 ALPHA=0.5
-# Weighting factor for rollout length penalty in the Q-score calculation.
 BETA=0.9
-# Length penalty normalizer for the Q-score.
 L_Q_LEN_PENALTY=500
-# (Not actively used in adaptive MC) The fixed number of rollouts per node.
 K_FIXED_ROLLOUTS=16
-# The maximum number of MCTS search iterations before stopping.
 MAX_SEARCH_COUNT=20
-# The maximum total number of LLM calls for rollouts allowed for a single problem.
 MAX_ROLLOUT_BUDGET=150
-# Whether to save the full reasoning tree structure in the output JSONL.
 SAVE_DATA_TREE=True
 
-# --- Adaptive Monte Carlo (AMC) Settings ---
 # The initial number of rollouts (k0) to perform when a new node is first evaluated.
 K0_ADAPTIVE_MC=6
 # The minimum number of additional rollouts to perform in a single adaptive step.
@@ -47,23 +30,16 @@ MAX_DYNAMIC_K_STEP=6
 HW_SCALING_FACTOR=12.0
 
 # --- AMC Clustering Settings ---
-# The minimum number of samples a cluster must have before it can be frozen (considered stable).
 K_MIN_CLUSTER_MC=3
-# The confidence interval half-width threshold. If a cluster's HW is below this, it is frozen.
 EPSILON_CLUSTER_MC=0.2
-# The maximum total number of rollouts allowed for any single node, serving as a hard cap.
 K_MAX_NODE_MC=20
-# The number of clusters to group rollouts into based on their features.
 NUM_CLUSTERS_K_MC=3
-# A comma-separated list of features to use for clustering (e.g., 'nll', 'log_length').
 FEATURE_NAMES_MC="nll,log_length"
-# The confidence interval half-width threshold for the entire node. If the node's overall HW is below this, sampling stops early.
 EPSILON_NODE_CONFIDENCE_STOP=0.2
 
-# --- Rollout Filtering Settings ---
-# Threshold for average Negative Log-Likelihood (NLL). Rollouts with higher avg NLL are discarded as low-quality.
+
+
 NLL_FILTER_THRESHOLD=100.0
-# Threshold for the number of Unicode replacement characters ('\ufffd'). Rollouts with more than this are discarded as garbled.
 GARBLED_FILTER_LEVEL=3
 
 USE_FILTER=False

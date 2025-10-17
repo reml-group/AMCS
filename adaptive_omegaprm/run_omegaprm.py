@@ -174,7 +174,7 @@ if __name__ == "__main__":
     parser.add_argument("--question_file", type=str, required=True)
     parser.add_argument("--output_file_path", type=str, required=True)
     parser.add_argument("--log_file_prefix", type=str, default="logs/omegaprm_default_run")
-    parser.add_argument("--model_name", type=str, default="/data2/qsh/model/Qwen2.5-Math-7B-Instruct/")
+    parser.add_argument("--model_name", type=str)
     parser.add_argument("--device", type=str, default="cuda")
     parser.add_argument("--model_type", type=str, default="vllm", choices=["vllm", "hf"])
     parser.add_argument("--max_new_tokens", type=int, default=1024)
@@ -203,4 +203,5 @@ if __name__ == "__main__":
     parser.add_argument("--max_questions_to_process", type=int, default=-1)
     
     args = parser.parse_args()
+
     main(args)

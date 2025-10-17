@@ -55,4 +55,4 @@ def split_questions_uniformly(input_filepath: str, output_directory: str, num_fi
 
 
 if __name__ == "__main__":
-    split_questions_uniformly("/data2/qsh/project/adaptive_omegaprm/adaptive_omegaprmv4/problems_part2.json", "output_directory", 2)
+    split_questions_uniformly("path", "output_directory", 2)
