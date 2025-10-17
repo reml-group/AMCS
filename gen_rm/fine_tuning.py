@@ -3,26 +3,16 @@ from datasets import load_dataset
 from peft import LoraConfig, TaskType, get_peft_model
 
 def preprocess_function(examples, tokenizer):
-    """
-    Tokenizes the input text and prepares it for training.
-    For causal language modeling, the 'labels' are typically a copy of the 'input_ids'.
-    """
     inputs = tokenizer(examples["text"], truncation=True, padding="max_length", max_length=1024)
     
     inputs["labels"] = inputs["input_ids"].copy()
     return inputs
 
 def train_genrm(model_name, tokenizer, output_dir):
-    """
-    The main function to set up and run the fine-tuning process.
-    """
-    dataset_path = "./dataset/organized_Llama-3.1-8B-Instruct_prm800k_train.json"
 
-    # Load the dataset from a JSON file.
-    # We are only loading a small slice ([0:1000]) for demonstration/debugging purposes.
+    dataset_path = "./dataset/organized_Llama-3.1-8B-Instruct_prm800k_train.json"
     dataset = load_dataset("json", data_files=dataset_path, split="train[0:1000]")
 
-    # Load the pre-trained base model from Hugging Face Hub.
     standard_model = AutoModelForCausalLM.from_pretrained(
         model_name,
         device_map="auto",
@@ -51,7 +41,6 @@ def train_genrm(model_name, tokenizer, output_dir):
     # Set up the data collator.
     data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False)
 
-    # Define the training arguments.
     training_args = TrainingArguments(
         # The directory where model checkpoints and logs will be saved.
         output_dir=output_dir,

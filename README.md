@@ -2,24 +2,28 @@
 
 This project is the official implementation of the paper **"FROM STATIC TO DYNAMIC: ADAPTIVE MONTE CARLO SEARCH FOR MATHEMATICAL PROCESS SUPERVISION"** .
 
-We propose the **Adaptive Monte Carlo Search (AMCS**) framework. AMCS fundamentally improves the process of generating process supervision data.Based on AMCs, we constructed a high-quality process supervision dataset **MathSearch-200K** containing approximately 200000 samples and trained **AMCS-PRM**. This demonstrates the significant value of high-quality process supervision in enhancing model capabilities.
+Large scale language models (LLMs) still face challenges when dealing with complex multi-step mathematical reasoning problems. Process Reward Models (PRMs) have been proven to be an effective way to enhance the reasoning ability of models by supervising each step of the reasoning process. However, obtaining high-quality process supervision data is the main bottleneck for training PRM. Existing methods typically rely on fixed budget sampling strategies, which are inefficient and lack flexibility in large search spaces.
 
-# Installation
+To address these issues, we propose the Adaptive Monte Carlo Search (AMCS) framework. AMCS fundamentally improves the process of generating process supervision data:
+1.  **Uncertainty driven adaptive sampling:** AMCS can dynamically allocate more computing resources (samples) to inference steps with high uncertainty, while reducing sampling of simple and high certainty steps, thereby significantly improving the efficiency of data annotation.
+2.  **Dynamic Exploration and Utilization Strategy:** AMCS uses Monte Carlo Tree Search (MCTS) to explore inference paths, which smoothly transitions from extensive exploration in the early stages to deep utilization in the later stages, thereby more effectively discovering high-quality inference paths and locating erroneous steps.
 
-1. Create a virtual environment:
+Based on AMCS, we constructed a high-quality process supervision dataset containing approximately 200000 samples and trained AMCS-PRM. Experimental results have shown that our method achieves the current best performance on multiple mathematical inference benchmarks such as MATH, AIME, Olympiad Bench, etc. This demonstrates the significant value of high-quality process supervision in enhancing model capabilities.
 
+## Environment Configuration
+
+2. Create a virtual environment:
    ```bash
    conda create -n amcs python=3.10
    conda activate amcs
    ```
 
-2. Install the required dependency packages.
-
+3. Install the required dependency packages.
    ```bash
    pip install -r requirements.txt
    ```
 
-# Usage
+## Usage
 
 ### 1. Generation of MathSearch-200K Datasets
 
@@ -52,6 +56,6 @@ This section aims to use AMCS-PRM as a validator to improve the performance of g
 
 `bash scripts/eval/vanila_mcts.sh [ACTOR_MODEL] [PRM_MODEL] [DATASET] [OUTPUT_DIR]`
 
-# Reference
+## Reference
 
 If you find our work helpful for your research, please consider citing our paper:
